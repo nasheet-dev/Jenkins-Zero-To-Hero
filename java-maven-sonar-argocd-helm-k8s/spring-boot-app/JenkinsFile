@@ -10,19 +10,20 @@ pipeline {
 
     stage('Checkout') {
       steps {
-        sh 'echo passed'
-        // git branch: 'main', url: 'https://github.com/nasheet-dev/Jenkins-Zero-To-Hero.git'
+        git branch: 'main', url: 'https://github.com/nasheet-dev/Jenkins-Zero-To-Hero.git'
       }
     }
-stage('Check Agent') {
-  steps {
-    sh '''
-      java -version
-      docker --version
-      which docker
-    '''
-  }
-}
+
+    stage('Check Agent') {
+      steps {
+        sh '''
+          java -version
+          docker --version
+          which docker
+        '''
+      }
+    }
+
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
